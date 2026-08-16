@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-arena text-selva-800 font-sans antialiased;
+  }
+
+  /* Foco visible consistente para navegación por teclado (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 3px solid #bc4749;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Quita el contorno solo cuando el foco es por mouse, nunca por teclado */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  /* Enlace "saltar al contenido": visible solo al recibir foco por teclado */
+  .skip-link {
+    @apply sr-only fixed left-2 top-2 z-50 rounded bg-selva-700 px-4 py-2 text-arena focus:not-sr-only;
+  }
+}

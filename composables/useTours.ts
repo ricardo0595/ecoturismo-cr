@@ -1,0 +1,82 @@
+export interface Tour {
+  slug: string
+  nombre: string
+  zona: string
+  duracion: string
+  dificultad: 'Baja' | 'Moderada' | 'Alta'
+  precio: string
+  resumen: string
+  detalle: string[]
+  variant: 'volcan' | 'nuboso' | 'humedal' | 'sendero' | 'playa'
+}
+
+export const useTours = (): Tour[] => [
+  {
+    slug: 'volcan-arenal',
+    nombre: 'Caminata Volcán Arenal',
+    zona: 'Parque Nacional Volcán Arenal, La Fortuna',
+    duracion: '4 horas',
+    dificultad: 'Moderada',
+    precio: '₡38.000 por persona',
+    resumen:
+      'Senderismo guiado entre coladas de lava fosilizadas y bosque secundario, con vistas al cono volcánico.',
+    detalle: [
+      'Guía naturalista certificado durante todo el recorrido.',
+      'Senderos interpretativos sobre la erupción de 1968.',
+      'Observación responsable de aves y fauna local, sin alimentar animales.',
+      'Grupos reducidos (máximo 10 personas) para minimizar el impacto.'
+    ],
+    variant: 'volcan'
+  },
+  {
+    slug: 'monteverde-bosque-nuboso',
+    nombre: 'Bosque Nuboso de Monteverde',
+    zona: 'Reserva Biológica Bosque Nuboso, Monteverde',
+    duracion: '3.5 horas',
+    dificultad: 'Baja',
+    precio: '₡42.000 por persona',
+    resumen:
+      'Recorrido por puentes colgantes y senderos suspendidos entre la niebla, con foco en flora epífita.',
+    detalle: [
+      'Puentes colgantes con capacidad limitada por seguridad y conservación.',
+      'Charla sobre el ecosistema de bosque nuboso y el cambio climático.',
+      'Parada fotográfica en el mirador de la Continental Divide.',
+      'Compensación de huella de carbono incluida en el precio del tour.'
+    ],
+    variant: 'nuboso'
+  },
+  {
+    slug: 'canales-tortuguero',
+    nombre: 'Canales de Tortuguero',
+    zona: 'Parque Nacional Tortuguero, Limón',
+    duracion: 'Medio día',
+    dificultad: 'Baja',
+    precio: '₡55.000 por persona',
+    resumen:
+      'Navegación silenciosa en bote eléctrico por los canales, hogar de manatíes, caimanes y aves acuáticas.',
+    detalle: [
+      'Embarcaciones de bajo impacto acústico para no alterar la fauna.',
+      'Guía local capacitado en el programa de protección de tortugas marinas.',
+      'Aporte directo a la asociación comunitaria de conservación de Tortuguero.',
+      'Chalecos salvavidas y equipo de seguridad incluidos.'
+    ],
+    variant: 'humedal'
+  },
+  {
+    slug: 'sendero-corcovado',
+    nombre: 'Ruta Sendero Sirena, Corcovado',
+    zona: 'Parque Nacional Corcovado, Península de Osa',
+    duracion: 'Día completo',
+    dificultad: 'Alta',
+    precio: '₡68.000 por persona',
+    resumen:
+      'Expedición de un día completo por uno de los bosques tropicales con mayor biodiversidad del planeta.',
+    detalle: [
+      'Cupo limitado por el MINAE para proteger la estación biológica.',
+      'Recomendado para personas con buena condición física.',
+      'Incluye almuerzo tipo box lunch de proveedores locales.',
+      'Se solicita llevar solo agua reutilizable: cero plásticos de un solo uso.'
+    ],
+    variant: 'sendero'
+  }
+]

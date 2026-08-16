@@ -1,0 +1,69 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Política de privacidad',
+  description: 'Qué datos recolecta EcoTurismo CR, para qué los usa y cómo los protege.'
+})
+</script>
+
+<template>
+  <article class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <h1 class="text-3xl font-bold text-selva-800 sm:text-4xl">Política de privacidad</h1>
+    <p class="mt-3 text-sm text-selva-800/80">Última actualización: marzo de 2026</p>
+
+    <div class="prose-eco mt-8 space-y-8">
+      <section aria-labelledby="que-datos">
+        <h2 id="que-datos" class="text-xl font-semibold text-selva-800">¿Qué datos recolectamos?</h2>
+        <p class="mt-2 max-w-prose text-selva-800/90">
+          Únicamente los datos que envías voluntariamente en el formulario de
+          contacto y reserva: nombre, correo electrónico, teléfono (opcional),
+          tour de interés, número de personas, fecha tentativa y el mensaje
+          que quieras agregar.
+        </p>
+      </section>
+
+      <section aria-labelledby="para-que">
+        <h2 id="para-que" class="text-xl font-semibold text-selva-800">¿Para qué los usamos?</h2>
+        <p class="mt-2 max-w-prose text-selva-800/90">
+          Exclusivamente para responder tu solicitud de reserva y coordinar
+          los detalles logísticos del tour (fecha, punto de encuentro,
+          tamaño del grupo). No usamos tus datos con fines publicitarios ni
+          los compartimos con terceros.
+        </p>
+      </section>
+
+      <section aria-labelledby="cookies">
+        <h2 id="cookies" class="text-xl font-semibold text-selva-800">Cookies y rastreadores</h2>
+        <p class="mt-2 max-w-prose text-selva-800/90">
+          Este sitio no utiliza cookies de publicidad ni herramientas de
+          analítica de terceros (como Google Analytics o píxeles de redes
+          sociales). La única información que se guarda en tu navegador es
+          tu respuesta al aviso de cookies ("Aceptar" o "Rechazar"),
+          almacenada localmente mediante <code>localStorage</code> y que
+          nunca se transmite a ningún servidor.
+        </p>
+      </section>
+
+      <section aria-labelledby="seguridad">
+        <h2 id="seguridad" class="text-xl font-semibold text-selva-800">Seguridad</h2>
+        <p class="mt-2 max-w-prose text-selva-800/90">
+          El sitio se sirve exclusivamente sobre HTTPS y aplica cabeceras de
+          seguridad HTTP (CSP, X-Frame-Options, entre otras) que restringen
+          la carga de recursos a nuestro propio dominio. Puedes ver el
+          detalle técnico en el archivo <code>README.md</code> del proyecto.
+        </p>
+      </section>
+
+      <section aria-labelledby="tus-derechos">
+        <h2 id="tus-derechos" class="text-xl font-semibold text-selva-800">Tus derechos</h2>
+        <p class="mt-2 max-w-prose text-selva-800/90">
+          Puedes solicitar en cualquier momento que eliminemos o corrijamos
+          los datos que nos enviaste escribiendo a
+          <a href="mailto:reservas@ecoturismocr.example" class="text-tucan-700 underline">
+            reservas@ecoturismocr.example</a
+          >. Al ser un sitio de proyecto universitario, ningún dato real es
+          almacenado en un servidor de producción.
+        </p>
+      </section>
+    </div>
+  </article>
+</template>
