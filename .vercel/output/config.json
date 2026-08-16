@@ -4,20 +4,20 @@
     "index.html": {
       "path": ""
     },
+    "privacidad/index.html": {
+      "path": "privacidad"
+    },
     "contacto/index.html": {
       "path": "contacto"
     },
-    "blog/index.html": {
-      "path": "blog"
-    },
-    "privacidad/index.html": {
-      "path": "privacidad"
+    "blog/aves-migratorias-tortuguero/index.html": {
+      "path": "blog/aves-migratorias-tortuguero"
     },
     "tours/index.html": {
       "path": "tours"
     },
-    "blog/aves-migratorias-tortuguero/index.html": {
-      "path": "blog/aves-migratorias-tortuguero"
+    "blog/index.html": {
+      "path": "blog"
     },
     "blog/cinco-habitos-viajero-responsable/index.html": {
       "path": "blog/cinco-habitos-viajero-responsable"
