@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "generate:vercel": "NITRO_PRESET=vercel-static nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-console.log('holis')
 const { consent, loadConsent, setConsent } = useCookieConsent()
 
 onMounted(loadConsent)
