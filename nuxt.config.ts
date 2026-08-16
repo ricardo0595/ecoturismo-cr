@@ -57,7 +57,7 @@ export default defineNuxtConfig({
         // terceros. No se permite ningún script, imagen ni conexión externa.
         'Content-Security-Policy':
           "default-src 'self'; " +
-          "script-src 'self' 'sha256-4RUoP2mc6lEa5ntVrVdNyFahY3XIzLxJRf9/ZBlUFX8='; " +
+          "script-src 'self' 'sha256-4RUoP2mc6lEa5ntVrVdNyFahY3XIzLxJRf9/ZBlUFX8=' 'sha256-XIr61e+3qM/ZMmqSZrP6gs1wwJ7YRq5r4eboOA6f3a8='; " +
           "style-src 'self' 'unsafe-inline'; " +
           "img-src 'self' data:; " +
           "font-src 'self'; " +
