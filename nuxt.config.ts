@@ -2,7 +2,14 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
+
+  // Fijamos un buildId estable (en vez del UUID aleatorio por build) para
+  // que el pequeño script de arranque que Nuxt incrusta en el HTML
+  // (window.__NUXT__.config = {...}) tenga siempre el mismo contenido
+  // byte a byte. Eso permite whitelistearlo en la CSP con un hash SHA-256
+  // fijo en vez de tener que usar 'unsafe-inline' (ver más abajo).
   buildId: 'ecoturismo-cr',
+
   modules: ['@nuxtjs/tailwindcss'],
 
   css: ['~/assets/css/main.css'],
@@ -37,6 +44,14 @@ export default defineNuxtConfig({
   // Nitro traduce routeRules.headers a la config nativa de la mayoría de
   // proveedores cloud (Netlify _headers, Vercel headers, etc.) al hacer
   // `nuxt generate` / `nuxt build`.
+  //
+  // La Content-Security-Policy SOLO se aplica fuera de `nuxt dev`: Vite
+  // necesita inyectar un <script> inline con la config de la app para el
+  // Hot Module Replacement, y una CSP con script-src 'self' estricto
+  // bloquea ese script, impidiendo que la app de Vue llegue a montarse
+  // (por eso ningún botón respondía en desarrollo). En el build de
+  // producción (`nuxt generate` / `nuxt build`) ese script inline no
+  // existe, así que ahí sí aplica la política completa.
   // --------------------------------------------------------------------
   routeRules: {
     '/**': {
@@ -55,24 +70,38 @@ export default defineNuxtConfig({
         // style-src incluye 'unsafe-inline' porque Vue/Nuxt inyectan estilos
         // críticos en línea durante el renderizado; no se cargan estilos de
         // terceros. No se permite ningún script, imagen ni conexión externa.
-        'Content-Security-Policy':
-          "default-src 'self'; " +
-          "script-src 'self' 'sha256-itg3v1c9+PA5x4RpdxijFD7XAhzMalrO/D4lrCQ82XE='; " +
-          "style-src 'self' 'unsafe-inline'; " +
-          "img-src 'self' data:; " +
-          "font-src 'self'; " +
-          "connect-src 'self'; " +
-          "object-src 'none'; " +
-          "base-uri 'self'; " +
-          "form-action 'self'; " +
-          "frame-ancestors 'none'; " +
-          'upgrade-insecure-requests'
+        ...(process.dev
+          ? {}
+          : {
+              'Content-Security-Policy':
+                "default-src 'self'; " +
+                // 'sha256-...' autoriza ÚNICAMENTE el script de arranque que
+                // Nuxt incrusta en cada página (window.__NUXT__.config = {...}).
+                // Su contenido es fijo (gracias a `buildId` fijado arriba) y no
+                // depende de datos de usuario, así que puede whitelistearse por
+                // hash sin recurrir a 'unsafe-inline'. Si se cambia `buildId`,
+                // el hash debe recalcularse (ver README → Seguridad).
+                "script-src 'self' 'sha256-4dbMuJAMvnpsl+9ZFYTmZeIGaokBTsFsS6ArvcHbKs8='; " +
+                "style-src 'self' 'unsafe-inline'; " +
+                "img-src 'self' data:; " +
+                "font-src 'self'; " +
+                "connect-src 'self'; " +
+                "object-src 'none'; " +
+                "base-uri 'self'; " +
+                "form-action 'self'; " +
+                "frame-ancestors 'none'; " +
+                'upgrade-insecure-requests'
+            })
       }
     }
   },
 
-  experimental: { payloadExtraction: false },
-
+  // El payload de datos de cada página se extrae a un archivo aparte
+  // (comportamiento por defecto de Nuxt) en vez de incrustarse inline en
+  // el HTML. Es clave para poder mantener una CSP estricta sin
+  // 'unsafe-inline' ni hashes: un script inline con datos que cambian por
+  // página necesitaría un hash distinto por página, algo inviable en un
+  // sitio 100% estático.
   // Genera un sitio 100% estático: ideal para alojamiento en la nube
   // (Netlify, Vercel, Cloudflare Pages, GitHub Pages) con bajo consumo
   // energético por petición (sin servidor Node corriendo permanentemente).
