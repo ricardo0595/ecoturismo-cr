@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { consent, loadConsent, setConsent } = useCookieConsent()
-
 onMounted(loadConsent)
 </script>
 

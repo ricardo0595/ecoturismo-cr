@@ -214,7 +214,7 @@ const enviar = () => {
           </li>
           <li>
             <span class="block text-selva-800/80">Teléfono</span>
-            <a href="tel:+50622345678" class="hover:text-tucan-700 hover:underline">+506 8888 8888</a>
+            <a href="tel:+50688888888" class="hover:text-tucan-700 hover:underline">+506 8888 8888</a>
           </li>
           <li>
             <span class="block text-selva-800/80">Oficina</span>
