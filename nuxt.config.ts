@@ -81,7 +81,7 @@ export default defineNuxtConfig({
                 // depende de datos de usuario, así que puede whitelistearse por
                 // hash sin recurrir a 'unsafe-inline'. Si se cambia `buildId`,
                 // el hash debe recalcularse (ver README → Seguridad).
-                "script-src 'self' 'sha256-mR240355mUsauB1oNcvOT3bJc7oZWpx0EoDWNkN1j8Q='; " +
+                "script-src 'self' 'unsafe-inline'; "+
                 "style-src 'self' 'unsafe-inline'; " +
                 "img-src 'self' data:; " +
                 "font-src 'self'; " +
